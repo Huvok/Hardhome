@@ -86,7 +86,7 @@
    <polyline points="0,0 -2,832 920,830"/>
   </object>
   <object id="38" x="30" y="62">
-   <polyline points="0,0 304,2 312,744 588,746 584,0 896,6 900,732"/>
+   <polyline points="0,0 304,2 308,0 582,0 584,0 896,6 900,732"/>
   </object>
  </objectgroup>
 </map>

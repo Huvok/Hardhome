@@ -140,7 +140,14 @@
   <ItemGroup>
     <None Include="Assets\Tiled2Unity\Imported\DummyMap1.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\DummyMap2.tiled2unity.xml" />
+    <None Include="Assets\Tiled2Unity\Imported\Tutorial.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
+    <None Include="Assets\Tiled2Unity\Imported\centro2.tiled2unity.xml" />
+    <None Include="Assets\Tiled2Unity\Imported\inicio.tiled2unity.xml" />
+    <None Include="Assets\Tiled2Unity\Imported\islas.tiled2unity.xml" />
+    <None Include="Assets\Tiled2Unity\Imported\mapa3.tiled2unity.xml" />
+    <None Include="Assets\Tiled2Unity\Imported\mapaNormal.tiled2unity.xml" />
+    <None Include="Assets\Tiled2Unity\Imported\mapaU.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\License.txt" />
     <None Include="Assets\Tiled2Unity\Materials\_ReadMe.txt" />
     <None Include="Assets\Tiled2Unity\Meshes\_ReadMe.txt" />
