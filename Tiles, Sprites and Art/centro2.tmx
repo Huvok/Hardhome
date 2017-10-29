@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" nextobjectid="7">
- <tileset firstgid="1" source="DummyMap1Tiles.tsx"/>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" nextobjectid="16">
+ <tileset firstgid="1" source="tiles.tsx"/>
  <tileset firstgid="1441" source="TreesTiles.tsx"/>
  <layer name="Background" width="30" height="30">
   <data encoding="csv">
@@ -36,14 +36,6 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="Collisions">
-  <object id="5" x="839" y="487">
-   <polyline points="0,0 -116,1 -120,-101"/>
-  </object>
-  <object id="6" x="838" y="413">
-   <polyline points="0,0 0,68 -115,76 -117,-26 121,-29 120,288 90,285 87,252 24,255 6,250 0,130 -116,130 -126,251 -520,253 -521,65 -692,66 -692,-33 -362,-31 -360,-122 -362,-67 -454,-68 -452,-396 -135,-395 -136,-66 -292,-65 -292,-122 -293,-39 -137,-35 -118,-28"/>
-  </object>
- </objectgroup>
  <layer name="Stone" width="30" height="30">
   <data encoding="csv">
 1,1,1,1,1,1,1,1,1,1,1,726,726,726,726,726,0,406,406,406,726,726,1,1,1,1,1,1,1,1,
@@ -112,4 +104,33 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup name="Collisions">
+  <object id="7" x="637" y="951">
+   <polyline points="0,0 1,-248 93,-248 93,-405 90,-418 204,-416 202,-256 254,-256 257,-287 298,-289 298,-374 321,-376"/>
+  </object>
+  <object id="8" x="959" y="495">
+   <polyline points="0,0 -26,1 -27,-109 -121,-102 -119,-4 -234,-6 -234,-95 -410,-93 -409,-207 -254,-206 -253,-453 -346,-451 -348,-494"/>
+  </object>
+  <object id="9" x="508" y="4">
+   <polyline points="0,0 1,39 -126,43 -125,339 -33,338 -32,289"/>
+  </object>
+  <object id="10" x="647" y="166">
+   <polyline points="0,0 0,-33 19,-33 20,4 0,2"/>
+  </object>
+  <object id="11" x="424" y="110">
+   <polyline points="0,0 13,1 15,22 -1,22 -1,1"/>
+  </object>
+  <object id="12" x="473" y="340">
+   <polyline points="0,0 2,61 -471,61"/>
+  </object>
+  <object id="13" x="1" y="506">
+   <polyline points="0,0 286,2 290,190 544,194 544,446"/>
+  </object>
+  <object id="14" x="567" y="626">
+   <polyline points="0,0 -3,-11 -37,-12 -40,0 -5,-1"/>
+  </object>
+  <object id="15" x="470" y="618">
+   <polyline points="0,0 -112,-2 -109,10 0,11 0,0"/>
+  </object>
+ </objectgroup>
 </map>

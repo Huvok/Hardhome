@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Player : MonoBehaviour
 {
@@ -10,10 +11,19 @@ public class Player : MonoBehaviour
     Rigidbody2D rb2d;
     Vector2 v2Mov;
 
-	void Start ()
+    public GameObject goInitialMap;
+
+    private void Awake()
+    {
+        Assert.IsNotNull(goInitialMap);
+    }
+
+    void Start ()
     {
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
+
+        Camera.main.GetComponent<MainCamera>().subSetBounds(goInitialMap);
 	}
 
 	void Update ()
@@ -32,6 +42,14 @@ public class Player : MonoBehaviour
         else
         {
             anim.SetBool("boolPlayerWalking", false);
+        }
+
+        AnimatorStateInfo animStateInfo = anim.GetCurrentAnimatorStateInfo(0);
+        bool boolAttacking = animStateInfo.IsName("Player Attack");
+
+        if (Input.GetMouseButtonDown(0) && !boolAttacking)
+        {
+            anim.SetTrigger("Attack");
         }
 	}
 
