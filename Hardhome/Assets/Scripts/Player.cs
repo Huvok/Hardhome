@@ -43,6 +43,14 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("boolPlayerWalking", false);
         }
+
+        AnimatorStateInfo animStateInfo = anim.GetCurrentAnimatorStateInfo(0);
+        bool boolAttacking = animStateInfo.IsName("Player Attack");
+
+        if (Input.GetMouseButtonDown(0) && !boolAttacking)
+        {
+            anim.SetTrigger("Attack");
+        }
 	}
 
     private void FixedUpdate()

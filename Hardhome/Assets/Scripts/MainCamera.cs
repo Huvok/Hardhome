@@ -16,8 +16,23 @@ public class MainCamera : MonoBehaviour {
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
+    private void Start()
+    {
+        Screen.SetResolution(1920, 1080, true);
+    }
+
     void Update ()
     {
+        if (!Screen.fullScreen || Camera.main.aspect != (1920/1080.0f))
+        {
+            Screen.SetResolution(1920, 1080, true);
+        }
+
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
+
         float numPosX = Mathf.Round(
             Mathf.SmoothDamp(transform.position.x, target.position.x,
             ref velocity.x, smoothTime) * 100) / 100;
@@ -49,8 +64,8 @@ public class MainCamera : MonoBehaviour {
     public void subFastCameraMove()
     {
         transform.position = new Vector3(
-            Mathf.Clamp(target.position.x, tLX, bRX),
-            Mathf.Clamp(target.position.y, bRY, tLY),
+            target.position.x,
+            target.position.y,
             transform.position.z
         );
     }
