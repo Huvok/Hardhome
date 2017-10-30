@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     Rigidbody2D rb2d;
     Vector2 v2Mov;
 
+    PolygonCollider2D attackCollider;
+
     public GameObject goInitialMap;
 
     private void Awake()
@@ -22,6 +24,9 @@ public class Player : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
+
+        attackCollider = transform.GetChild(0).GetComponent<PolygonCollider2D>();
+        attackCollider.enabled = false;
 
         Camera.main.GetComponent<MainCamera>().subSetBounds(goInitialMap);
 	}
@@ -50,6 +55,44 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !boolAttacking)
         {
             anim.SetTrigger("Attack");
+        }
+
+        if (v2Mov != Vector2.zero)
+        {
+            if (v2Mov.x == -1)
+            {
+                attackCollider.offset = new Vector2(0f, 0f);
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 0, -90);
+            }
+            else if (v2Mov.x == 1)
+            {
+                attackCollider.offset = new Vector2(0f, 0f);
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 0, 90);
+            }
+            else if (v2Mov.y == 1)
+            {
+                attackCollider.offset = new Vector2(0f, -.3f);
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 0, 180);
+            }
+            else if (v2Mov.y == -1)
+            {
+                attackCollider.offset = new Vector2(0f, -.3f);
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 0, 0);
+            }
+        }
+
+        if (boolAttacking)
+        {
+            float numPlaybackTime = animStateInfo.normalizedTime;
+            if (numPlaybackTime > .33f &&
+                numPlaybackTime < .66f)
+            {
+                attackCollider.enabled = true;
+            }
+            else
+            {
+                attackCollider.enabled = false;
+            }
         }
 	}
 
