@@ -2,40 +2,105 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour {
-	/*
-	private Vector3 Player;
-	private Vector2 PlayerDirection;
-	private float DifX;
-	private float DifY;
-	private float speed;
+public class EnemyAI : MonoBehaviour
+{
+    Grid grid;
 
-	void Start(){
-		speed = 10;
-	}
-	// Update is called once per frame
-	void Update () {
-		Player = GameObject.Find ("Player").transform.position;
-		DifX = Player.x - transform.position.x;
-		DifY = Player.y - transform.position.y;
+    public Transform seeker, target;
 
-		PlayerDirection = new Vector2 (DifX, DifY);
-		transform.Translate (PlayerDirection * speed);
-	*/
-	public Transform target;
-	public float speed = 2f;
-	private float minDistance = 1f;
-	private float range;
-	void Update ()
-	{
-		range = Vector2.Distance(transform.position, target.position);
+    private void Awake()
+    {
+        grid = GetComponent<Grid>();
+    }
 
-		if (range > minDistance)
-		{
-			Debug.Log(range);
+    private void Update()
+    {
+        FindPath(seeker.position - transform.position, target.position - transform.position);
+    }
 
-			transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-		}
-	}
+    void FindPath (Vector2 startPos, Vector2 targetPos)
+    {
+        Node startNode = grid.NodeFromWorldPoint(startPos);
+        Node targetNode = grid.NodeFromWorldPoint(targetPos);
+
+        List<Node> openSet = new List<Node>();
+        HashSet<Node> closedSet = new HashSet<Node>();
+        openSet.Add(startNode);
+
+        while (openSet.Count > 0)
+        {
+            Node currentNode = openSet[0];
+            for (int i = 0; i < openSet.Count; i++)
+            {
+                if (openSet[i].fCost < currentNode.fCost ||
+                    (openSet[i].fCost == currentNode.fCost &&
+                    openSet[i].hCost < currentNode.hCost))
+                {
+                    currentNode = openSet[i];
+                }
+            }
+
+            openSet.Remove(currentNode);
+            closedSet.Add(currentNode);
+
+            if (currentNode == targetNode)
+            {
+                RetracePath(startNode, targetNode);
+                return;
+            }
+
+            foreach (Node neighbour in grid.GetNeighbours(currentNode))
+            {
+                if (!neighbour.walkable || closedSet.Contains(neighbour))
+                {
+                    continue;
+                }
+
+                int newMovementCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour);
+                if (newMovementCostToNeighbour < neighbour.gCost || !openSet.Contains(neighbour))
+                {
+                    neighbour.gCost = newMovementCostToNeighbour;
+                    neighbour.hCost = GetDistance(neighbour, targetNode);
+                    neighbour.parent = currentNode;
+
+                    if (!openSet.Contains(neighbour))
+                    {
+                        openSet.Add(neighbour);
+                    }
+                }
+            }
+        }
+    }
+
+    void RetracePath(Node startNode, Node endNode)
+    {
+        List<Node> path = new List<Node>();
+        Node currentNode = endNode;
+
+        while (currentNode != startNode)
+        {
+            path.Add(currentNode);
+            currentNode = currentNode.parent;
+        }
+
+        path.Reverse();
+
+        grid.path = path;
+    }
+
+    int GetDistance (Node nodeA, Node nodeB)
+    {
+        int distX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
+        int distY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
+
+        if (distX > distY)
+        {
+            return 14 * distY + 10 * (distX - distY);
+        }
+        else
+        {
+            return 14 * distX + 10 * (distY - distX);
+        }
+    }
 }
 
