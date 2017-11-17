@@ -80,8 +80,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AIPath.cs" />
     <Compile Include="Assets\Scripts\Area.cs" />
+    <Compile Include="Assets\Scripts\DestroyEnemy.cs" />
     <Compile Include="Assets\Scripts\Destroyable.cs" />
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\EnemySpawn.cs" />
+    <Compile Include="Assets\Scripts\EnemySpawnfor10.cs" />
+    <Compile Include="Assets\Scripts\EnemySpawnfor2.cs" />
     <Compile Include="Assets\Scripts\FixDepths.cs" />
     <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\Heap.cs" />
