@@ -11,7 +11,7 @@ public class Grid : MonoBehaviour
     public LayerMask unwalkableMask;
     public TerrainType[] walkableRegions;
     public int obstacleProximityPenalty = 50;
-    LayerMask walkableMask;
+    LayerMask walkableMask = 0;
     Dictionary<int, int> walkableRegionsDictionary = new Dictionary<int, int>();
 
     float nodeDiameter;
@@ -183,13 +183,15 @@ public class Grid : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, new Vector2(gridWorldSize.x, gridWorldSize.y));
         if (grid != null && displayGridGizmos)
         {
-            Node playerNode = NodeFromWorldPoint(player.position - transform.position);
+            Node playerNode = NodeFromWorldPoint(player.position);
             foreach (Node n in grid)
             {
                 Gizmos.color = Color.Lerp(Color.white, Color.black, Mathf.InverseLerp(penaltyMin, penaltyMax, n.movementPenalty));
                 Gizmos.color = n.walkable ? Gizmos.color : Color.red;
                 Gizmos.DrawCube(n.worldPosition, Vector2.one * (nodeDiameter - .05f));
             }
+            Gizmos.color = Color.green;
+            Gizmos.DrawCube(playerNode.worldPosition, Vector2.one * (nodeDiameter - .05f));
         }
     }
 }

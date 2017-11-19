@@ -17,11 +17,12 @@ public class Unit : MonoBehaviour
     private void Start()
     {
         StartCoroutine(UpdatePath());
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public void OnPathFound(Vector2[] waypoints, bool pathSuccessful)
     {
-        if (pathSuccessful)
+        if (pathSuccessful && transform != null)
         {
             path = new AIPath(waypoints, transform.position, turnDst, stoppingDst);
             StopCoroutine("FollowPath");
@@ -36,7 +37,8 @@ public class Unit : MonoBehaviour
             yield return new WaitForSeconds(.3f);
         }
 
-        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+        PathRequestManager goCurrentAStar = GameObject.FindGameObjectWithTag("A*").GetComponent<PathRequestManager>();
+        goCurrentAStar.RequestPath(transform.position, target.position, OnPathFound);
 
         float sqrMoveThreshold = pathUpdateMoveThreshold * pathUpdateMoveThreshold;
         Vector2 targetPosOld = target.position;
@@ -46,7 +48,7 @@ public class Unit : MonoBehaviour
             yield return new WaitForSeconds(minPathUpdateTime);
             if (((Vector2)target.position - targetPosOld).sqrMagnitude > sqrMoveThreshold)
             {
-                PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+                goCurrentAStar.RequestPath(transform.position, target.position, OnPathFound);
                 targetPosOld = target.position;
             }
         }

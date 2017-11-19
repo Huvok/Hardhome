@@ -8,21 +8,19 @@ public class PathRequestManager : MonoBehaviour
     Queue<PathRequest> pathRequestQueue = new Queue<PathRequest>();
     PathRequest currentPathRequest;
 
-    static PathRequestManager instance;
     EnemyAI enemyAI;
     bool isProcessingPath;
 
     private void Awake()
     {
-        instance = this;
         enemyAI = GetComponent<EnemyAI>();
     }
 
-    public static void RequestPath(Vector2 pathStart, Vector2 pathEnd, Action<Vector2[], bool> callback)
+    public void RequestPath(Vector2 pathStart, Vector2 pathEnd, Action<Vector2[], bool> callback)
     {
         PathRequest newRequest = new PathRequest(pathStart, pathEnd, callback);
-        instance.pathRequestQueue.Enqueue(newRequest);
-        instance.TryProcessNext();
+        pathRequestQueue.Enqueue(newRequest);
+        TryProcessNext();
     }
 
     void TryProcessNext()
