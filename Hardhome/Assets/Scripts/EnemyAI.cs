@@ -16,7 +16,10 @@ public class EnemyAI : MonoBehaviour
 
     public void StartFindPath(Vector2 startPos, Vector2 targetPos)
     {
-        StartCoroutine(FindPath(startPos, targetPos));
+        if (enabled)
+        {
+            StartCoroutine(FindPath(startPos, targetPos));
+        }
     }
 
     IEnumerator FindPath (Vector2 startPos, Vector2 targetPos)
