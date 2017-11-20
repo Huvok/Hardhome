@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     Animator anim;
     Rigidbody2D rb2d;
     Vector2 v2Mov;
+    Vector2 v2ForceReceivedDirection;
+    int intForceReceived;
+    float fForceReceivedTimer = 5.0f;
 
     PolygonCollider2D attackCollider;
     DialogueManager dialogueManager;
@@ -109,16 +112,27 @@ public class Player : MonoBehaviour
     {
         if (collision.name.StartsWith("Damage"))
         {
-            int intDamage = DamageManager.intFind(collision.name.Substring(collision.name.IndexOf("-") + 1));
+            string strSource = collision.name.Substring(collision.name.IndexOf("-") + 1);
+            int intDamage = DamageManager.intGetDamage(strSource);
             UIManager.fHealth -= intDamage;
             healthSystem.subReceiveDamage(intDamage);
             anim.Play("Receive_Damage");
+
+            v2ForceReceivedDirection = collision.transform.position - transform.position;
+            v2ForceReceivedDirection = -v2ForceReceivedDirection.normalized;
+            intForceReceived = DamageManager.intGetForce(strSource);
+            fForceReceivedTimer = 0.0f;
         }
     }
 
     private void FixedUpdate()
     {
         rb2d.MovePosition(rb2d.position + v2Mov * speed * Time.deltaTime);
+        if (fForceReceivedTimer < 0.3f)
+        {
+            fForceReceivedTimer += Time.deltaTime;
+            rb2d.MovePosition(rb2d.position + v2ForceReceivedDirection * intForceReceived * Time.deltaTime);
+        }
     }
 
     public void subTriggerDialogue(string strDialogue)
