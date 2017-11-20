@@ -11,13 +11,16 @@ public class Unit : MonoBehaviour
     public float turnDst = 5;
     public float turnSpeed = 3;
     public float stoppingDst = 10;
+    float fMovX, fMovY;
 
     AIPath path;
+    Animator animator;
 
     private void Start()
     {
         StartCoroutine(UpdatePath());
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        animator = GetComponent<Animator>();
     }
 
     public void OnPathFound(Vector2[] waypoints, bool pathSuccessful)
@@ -101,6 +104,24 @@ public class Unit : MonoBehaviour
                 Vector2 movDirection = Vector2.Lerp(curMovDir, nextMovDir, Time.deltaTime * turnSpeed);
                 curMovDir = movDirection;
                 transform.position += (Vector3)(movDirection.normalized * Time.deltaTime * speed * speedPercent); //Vector2.MoveTowards(transform.position, movDirection, Time.deltaTime * speed * speedPercent);
+
+                if (Mathf.Abs(movDirection.x) > .5 ||
+                    Mathf.Abs(movDirection.y) > .5)
+                {
+                    if (movDirection.x > 0) fMovX = 1.0f;
+                    else if (movDirection.x < 0) fMovX = -1.0f;
+
+                    if (movDirection.y > 0) fMovY = 1.0f;
+                    else if (movDirection.y < 0) fMovY = -1.0f;
+
+                    animator.SetFloat("movX", fMovX);
+                    animator.SetFloat("movY", fMovY);
+                    animator.SetBool("boolEPWalking", true);
+                }
+                else
+                {
+                    animator.SetBool("boolEPWalking", false);
+                }
             }
            
             yield return null;

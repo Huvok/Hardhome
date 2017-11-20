@@ -221,11 +221,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AIPath.cs" />
     <Compile Include="Assets\Scripts\Area.cs" />
-    <Compile Include="Assets\Scripts\CutsceneManager.cs" />
-    <Compile Include="Assets\Scripts\DamageManager.cs" />
     <Compile Include="Assets\Scripts\Destroyable.cs" />
     <Compile Include="Assets\Scripts\Dialogue.cs" />
-    <Compile Include="Assets\Scripts\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\DialogueTrigger.cs" />
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\EnlightenedSprout.cs" />
@@ -233,13 +230,17 @@
     <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\HealthSystem.cs" />
     <Compile Include="Assets\Scripts\Heap.cs" />
+    <Compile Include="Assets\Scripts\InvincibilityTimer.cs" />
     <Compile Include="Assets\Scripts\Line.cs" />
     <Compile Include="Assets\Scripts\MainCamera.cs" />
+    <Compile Include="Assets\Scripts\Managers\CutsceneManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\DamageManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\DialogueManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\PathRequestManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
-    <Compile Include="Assets\Scripts\PathRequestManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\SpawnManager.cs" />
-    <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
     <Compile Include="Assets\Scripts\Warp.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />

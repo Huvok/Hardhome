@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
 
     public GameObject goInitialMap;
     HealthSystem healthSystem;
+    InvincibilityTimer invincibilityTimer;
 
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
         dialogueManager = GameObject.FindGameObjectWithTag("Dialogue Manager").GetComponent<DialogueManager>();
         cutsceneManager = GameObject.FindGameObjectWithTag("Cutscene Manager").GetComponent<CutsceneManager>();
         healthSystem = GetComponent<HealthSystem>();
+        invincibilityTimer = GetComponent<InvincibilityTimer>();
 	}
 
 	void Update ()
@@ -98,11 +100,13 @@ public class Player : MonoBehaviour
                 if (numPlaybackTime > .33f &&
                     numPlaybackTime < .66f)
                 {
-                    attackCollider.enabled = true;
+                    if (!attackCollider.enabled)
+                        attackCollider.enabled = true;
                 }
                 else
                 {
-                    attackCollider.enabled = false;
+                    if (attackCollider.enabled)
+                        attackCollider.enabled = false;
                 }
             }
         }
@@ -110,8 +114,11 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name.StartsWith("Damage"))
+        if (collision.name.StartsWith("Damage") &&
+            !invincibilityTimer.boolIsInvincible)
         {
+            invincibilityTimer.fInvincibleTime = 1.0f;
+            invincibilityTimer.boolIsInvincible = true;
             string strSource = collision.name.Substring(collision.name.IndexOf("-") + 1);
             int intDamage = DamageManager.intGetDamage(strSource);
             UIManager.fHealth -= intDamage;
@@ -128,7 +135,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb2d.MovePosition(rb2d.position + v2Mov * speed * Time.deltaTime);
-        if (fForceReceivedTimer < 0.3f)
+        if (fForceReceivedTimer < 0.1f)
         {
             fForceReceivedTimer += Time.deltaTime;
             rb2d.MovePosition(rb2d.position + v2ForceReceivedDirection * intForceReceived * Time.deltaTime);
