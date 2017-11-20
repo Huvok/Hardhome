@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     CutsceneManager cutsceneManager;
 
     public GameObject goInitialMap;
+    HealthSystem healthSystem;
 
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour
         Camera.main.GetComponent<MainCamera>().subSetBounds(goInitialMap);
         dialogueManager = GameObject.FindGameObjectWithTag("Dialogue Manager").GetComponent<DialogueManager>();
         cutsceneManager = GameObject.FindGameObjectWithTag("Cutscene Manager").GetComponent<CutsceneManager>();
+        healthSystem = GetComponent<HealthSystem>();
 	}
 
 	void Update ()
@@ -102,6 +104,17 @@ public class Player : MonoBehaviour
             }
         }
 	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name.StartsWith("Damage"))
+        {
+            int intDamage = DamageManager.intFind(collision.name.Substring(collision.name.IndexOf("-") + 1));
+            UIManager.fHealth -= intDamage;
+            healthSystem.subReceiveDamage(intDamage);
+            anim.Play("Receive_Damage");
+        }
+    }
 
     private void FixedUpdate()
     {

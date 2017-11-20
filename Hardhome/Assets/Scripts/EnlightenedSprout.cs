@@ -14,11 +14,7 @@ public class EnlightenedSprout : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "Player")
-        {
-            UIManager.fHealth -= 10f;
-        }
-        else if (col.tag == "Attack Zone")
+        if (col.tag == "Attack Zone")
         {
             if (goPlayer.transform.GetChild(0).transform.localEulerAngles.z == 90)
             {

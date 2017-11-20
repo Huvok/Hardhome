@@ -222,6 +222,7 @@
     <Compile Include="Assets\Scripts\AIPath.cs" />
     <Compile Include="Assets\Scripts\Area.cs" />
     <Compile Include="Assets\Scripts\CutsceneManager.cs" />
+    <Compile Include="Assets\Scripts\DamageManager.cs" />
     <Compile Include="Assets\Scripts\Destroyable.cs" />
     <Compile Include="Assets\Scripts\Dialogue.cs" />
     <Compile Include="Assets\Scripts\DialogueManager.cs" />
@@ -230,6 +231,7 @@
     <Compile Include="Assets\Scripts\EnlightenedSprout.cs" />
     <Compile Include="Assets\Scripts\FixDepths.cs" />
     <Compile Include="Assets\Scripts\Grid.cs" />
+    <Compile Include="Assets\Scripts\HealthSystem.cs" />
     <Compile Include="Assets\Scripts\Heap.cs" />
     <Compile Include="Assets\Scripts\Line.cs" />
     <Compile Include="Assets\Scripts\MainCamera.cs" />

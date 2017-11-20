@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour
 {
     PathRequestManager requestManager;
     Grid grid;
+    public GameObject goAStar;
 
     private void Awake()
     {
@@ -16,7 +17,7 @@ public class EnemyAI : MonoBehaviour
 
     public void StartFindPath(Vector2 startPos, Vector2 targetPos)
     {
-        if (enabled)
+        if (goAStar.activeInHierarchy)
         {
             StartCoroutine(FindPath(startPos, targetPos));
         }
