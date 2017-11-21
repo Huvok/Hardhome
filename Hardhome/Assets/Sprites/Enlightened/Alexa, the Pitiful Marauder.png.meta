@@ -1,0 +1,619 @@
+fileFormatVersion: 2
+guid: 29288cdf3dd288e49895435507d46ea3
+timeCreated: 1511235933
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Alexa, the Pitiful Marauder_0
+    21300002: Alexa, the Pitiful Marauder_1
+    21300004: Alexa, the Pitiful Marauder_2
+    21300006: Alexa, the Pitiful Marauder_3
+    21300008: Alexa, the Pitiful Marauder_4
+    21300010: Alexa, the Pitiful Marauder_5
+    21300012: Alexa, the Pitiful Marauder_6
+    21300014: Alexa, the Pitiful Marauder_7
+    21300016: Alexa, the Pitiful Marauder_8
+    21300018: Alexa, the Pitiful Marauder_9
+    21300020: Alexa, the Pitiful Marauder_10
+    21300022: Alexa, the Pitiful Marauder_11
+    21300024: Alexa, the Pitiful Marauder_12
+    21300026: Alexa, the Pitiful Marauder_13
+    21300028: Alexa, the Pitiful Marauder_14
+    21300030: Alexa, the Pitiful Marauder_15
+    21300032: Alexa, the Pitiful Marauder_16
+    21300034: Alexa, the Pitiful Marauder_17
+    21300036: Alexa, the Pitiful Marauder_18
+    21300038: Alexa, the Pitiful Marauder_19
+    21300040: Alexa, the Pitiful Marauder_20
+    21300042: Alexa, the Pitiful Marauder_21
+    21300044: Alexa, the Pitiful Marauder_22
+    21300046: Alexa, the Pitiful Marauder_23
+    21300048: Alexa, the Pitiful Marauder_24
+    21300050: Alexa, the Pitiful Marauder_25
+    21300052: Alexa, the Pitiful Marauder_26
+    21300054: Alexa, the Pitiful Marauder_27
+    21300056: Alexa, the Pitiful Marauder_28
+    21300058: Alexa, the Pitiful Marauder_29
+    21300060: Alexa, the Pitiful Marauder_30
+    21300062: Alexa, the Pitiful Marauder_31
+    21300064: Alexa, the Pitiful Marauder_32
+    21300066: Alexa, the Pitiful Marauder_33
+    21300068: Alexa, the Pitiful Marauder_34
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 649
+        width: 39
+        height: 53
+      alignment: 9
+      pivot: {x: 0.38031504, y: 0.44142354}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 646
+        width: 39
+        height: 56
+      alignment: 9
+      pivot: {x: 0.39735335, y: 0.47072384}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_2
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 649
+        width: 39
+        height: 53
+      alignment: 9
+      pivot: {x: 0.39735335, y: 0.44306803}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_3
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 647
+        width: 39
+        height: 55
+      alignment: 9
+      pivot: {x: 0.39051035, y: 0.45731756}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_4
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 650
+        width: 39
+        height: 53
+      alignment: 9
+      pivot: {x: 0.39735296, y: 0.44984984}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_5
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 577
+        width: 22
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5081222, y: 0.5108631}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_6
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 574
+        width: 28
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5584684, y: 0.4927793}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_7
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 577
+        width: 22
+        height: 54
+      alignment: 9
+      pivot: {x: 0.4858884, y: 0.48850167}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_8
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 573
+        width: 30
+        height: 55
+      alignment: 9
+      pivot: {x: 0.5827886, y: 0.49435592}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_9
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 511
+        width: 40
+        height: 53
+      alignment: 9
+      pivot: {x: 0.58899325, y: 0.46082118}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_10
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 511
+        width: 36
+        height: 49
+      alignment: 9
+      pivot: {x: 0.5741611, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_11
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 511
+        width: 40
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5741612, y: 0.4720148}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_12
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 509
+        width: 32
+        height: 55
+      alignment: 9
+      pivot: {x: 0.4907298, y: 0.48921344}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_13
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 446
+        width: 28
+        height: 50
+      alignment: 9
+      pivot: {x: 0.4068621, y: 0.49348024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_14
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 444
+        width: 32
+        height: 56
+      alignment: 9
+      pivot: {x: 0.39813066, y: 0.48253685}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_15
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 447
+        width: 28
+        height: 50
+      alignment: 9
+      pivot: {x: 0.3602938, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_16
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 445
+        width: 30
+        height: 55
+      alignment: 9
+      pivot: {x: 0.4022054, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_17
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 381
+        width: 30
+        height: 63
+      alignment: 9
+      pivot: {x: 0.5760628, y: 0.39651343}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_18
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 381
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: 0.73905385, y: 0.44784302}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_19
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 380
+        width: 70
+        height: 58
+      alignment: 9
+      pivot: {x: 0.6769621, y: 0.3763517}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_20
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 365
+        width: 43
+        height: 75
+      alignment: 9
+      pivot: {x: 0.4014474, y: 0.5565039}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_21
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 380
+        width: 69
+        height: 54
+      alignment: 9
+      pivot: {x: 0.3866148, y: 0.45774332}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_22
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 381
+        width: 57
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_23
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 288
+        width: 26
+        height: 59
+      alignment: 9
+      pivot: {x: 0.65045357, y: 0.5828769}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_24
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 288
+        width: 37
+        height: 59
+      alignment: 9
+      pivot: {x: 0.34141397, y: 0.5994527}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_25
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 302
+        width: 75
+        height: 45
+      alignment: 9
+      pivot: {x: 0.20009603, y: 0.4927558}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_26
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 297
+        width: 53
+        height: 65
+      alignment: 9
+      pivot: {x: 0.38313842, y: 0.34954646}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_27
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 211
+        width: 53
+        height: 47
+      alignment: 9
+      pivot: {x: 0.2847285, y: 0.50693595}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_28
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 212
+        width: 52
+        height: 59
+      alignment: 9
+      pivot: {x: 0.21163075, y: 0.42817327}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_29
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 210
+        width: 34
+        height: 84
+      alignment: 9
+      pivot: {x: 0.51917535, y: 0.33312806}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_30
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 210
+        width: 57
+        height: 62
+      alignment: 9
+      pivot: {x: 0.711603, y: 0.431649}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_31
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 120
+        width: 22
+        height: 73
+      alignment: 9
+      pivot: {x: 0.5000002, y: 0.34370673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_32
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 117
+        width: 41
+        height: 74
+      alignment: 9
+      pivot: {x: 0.70672065, y: 0.35022426}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_33
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 118
+        width: 72
+        height: 49
+      alignment: 9
+      pivot: {x: 0.78523487, y: 0.5399164}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Alexa, the Pitiful Marauder_34
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 108
+        width: 50
+        height: 58
+      alignment: 9
+      pivot: {x: 0.68907046, y: 0.55058366}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

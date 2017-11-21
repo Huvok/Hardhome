@@ -5,7 +5,6 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     public int intHP;
-    public GameObject goThis;
     Animator animator;
 
 	void Start ()
@@ -24,7 +23,7 @@ public class HealthSystem : MonoBehaviour
             }
             else
             {
-                Destroy(goThis);
+                Destroy(gameObject);
             }
         }
 	}
@@ -38,7 +37,8 @@ public class HealthSystem : MonoBehaviour
             yield return null;
         }
 
-        Destroy(goThis);
+        if (gameObject.tag != "Player")
+            Destroy(gameObject);
     }
 
     public void subReceiveDamage(int intDamage)

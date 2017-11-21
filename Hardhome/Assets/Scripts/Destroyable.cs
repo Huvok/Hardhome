@@ -16,7 +16,7 @@ public class Destroyable : MonoBehaviour {
 
     IEnumerator OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "Attack Zone")
+        if (col.tag == "Player_Sword_Zone")
         {
             anim.Play(destroyState);
             yield return new WaitForSeconds(timeForDisable);

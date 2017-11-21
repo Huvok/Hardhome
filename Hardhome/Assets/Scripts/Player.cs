@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     Vector2 v2Mov;
     Vector2 v2ForceReceivedDirection;
     int intForceReceived;
-    float fForceReceivedTimer = 5.0f;
+    float fForceReceivedTimer = 0.0f;
 
     PolygonCollider2D attackCollider;
     DialogueManager dialogueManager;
@@ -128,16 +128,16 @@ public class Player : MonoBehaviour
             v2ForceReceivedDirection = collision.transform.position - transform.position;
             v2ForceReceivedDirection = -v2ForceReceivedDirection.normalized;
             intForceReceived = DamageManager.intGetForce(strSource);
-            fForceReceivedTimer = 0.0f;
+            fForceReceivedTimer = 0.1f;
         }
     }
 
     private void FixedUpdate()
     {
         rb2d.MovePosition(rb2d.position + v2Mov * speed * Time.deltaTime);
-        if (fForceReceivedTimer < 0.1f)
+        if (fForceReceivedTimer > 0.0f)
         {
-            fForceReceivedTimer += Time.deltaTime;
+            fForceReceivedTimer -= Time.deltaTime;
             rb2d.MovePosition(rb2d.position + v2ForceReceivedDirection * intForceReceived * Time.deltaTime);
         }
     }

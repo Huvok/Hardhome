@@ -12,6 +12,7 @@ public class Unit : MonoBehaviour
     public float turnSpeed = 3;
     public float stoppingDst = 10;
     float fMovX, fMovY;
+    public string strWalkingAnimationStateName;
 
     AIPath path;
     Animator animator;
@@ -25,7 +26,7 @@ public class Unit : MonoBehaviour
 
     public void OnPathFound(Vector2[] waypoints, bool pathSuccessful)
     {
-        if (pathSuccessful && transform != null)
+        if (pathSuccessful && gameObject.activeSelf)
         {
             path = new AIPath(waypoints, transform.position, turnDst, stoppingDst);
             StopCoroutine("FollowPath");
@@ -105,22 +106,36 @@ public class Unit : MonoBehaviour
                 curMovDir = movDirection;
                 transform.position += (Vector3)(movDirection.normalized * Time.deltaTime * speed * speedPercent); //Vector2.MoveTowards(transform.position, movDirection, Time.deltaTime * speed * speedPercent);
 
+                Debug.Log(movDirection.x + " " + movDirection.y);
                 if (Mathf.Abs(movDirection.x) > .5 ||
                     Mathf.Abs(movDirection.y) > .5)
                 {
-                    if (movDirection.x > 0) fMovX = 1.0f;
-                    else if (movDirection.x < 0) fMovX = -1.0f;
+                    if (Mathf.Abs(movDirection.x) >= Mathf.Abs(movDirection.y))
+                    {
+                        if (movDirection.x > 0) fMovX = 1;
+                        else fMovX = -1;
 
-                    if (movDirection.y > 0) fMovY = 1.0f;
-                    else if (movDirection.y < 0) fMovY = -1.0f;
+                        fMovY = 0;
+                    }
+                    else
+                    {
+                        if (movDirection.y > 0) fMovY = 1;
+                        else fMovY = -1;
+
+                        fMovX = 0;
+                    }
 
                     animator.SetFloat("movX", fMovX);
                     animator.SetFloat("movY", fMovY);
-                    animator.SetBool("boolEPWalking", true);
+                    animator.SetBool(strWalkingAnimationStateName, true);
                 }
                 else
                 {
-                    animator.SetBool("boolEPWalking", false);
+                    fMovX = 0;
+                    fMovY = 0;
+                    animator.SetFloat("movX", fMovX);
+                    animator.SetFloat("movY", fMovY);
+                    animator.SetBool(strWalkingAnimationStateName, false);
                 }
             }
            
@@ -134,5 +149,10 @@ public class Unit : MonoBehaviour
         {
             path.DrawWithGizmos();
         }
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }
