@@ -1,11 +1,14 @@
 fileFormatVersion: 2
 guid: 0bb610d76517b294dafa6fd31f571cde
-timeCreated: 1511114716
+timeCreated: 1511312068
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Utilities_0
     21300002: Utilities_1
+    21300004: Utilities_2
+    21300006: Utilities_3
+    21300008: Utilities_4
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -110,6 +113,48 @@ TextureImporter:
         y: 473
         width: 111
         height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Utilities_2
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 463
+        width: 26
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Utilities_3
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 455
+        width: 22
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Utilities_4
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 447
+        width: 22
+        height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -109,6 +109,16 @@ public class Player : MonoBehaviour
                         attackCollider.enabled = false;
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                if (ItemManager.intPotions > 0)
+                {
+                    ItemManager.intPotions--;
+                    healthSystem.subRecoverHP(ItemManager.intPotionStrength);
+                    UIManager.subRedrawPotions();
+                }
+            }
         }
 	}
 
@@ -121,7 +131,6 @@ public class Player : MonoBehaviour
             invincibilityTimer.boolIsInvincible = true;
             string strSource = collision.name.Substring(collision.name.IndexOf("-") + 1);
             int intDamage = DamageManager.intGetDamage(strSource);
-            UIManager.fHealth -= intDamage;
             healthSystem.subReceiveDamage(intDamage);
             anim.Play("Receive_Damage");
 

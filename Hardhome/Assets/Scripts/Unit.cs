@@ -26,7 +26,7 @@ public class Unit : MonoBehaviour
 
     public void OnPathFound(Vector2[] waypoints, bool pathSuccessful)
     {
-        if (pathSuccessful && gameObject.activeSelf)
+        if (pathSuccessful && gameObject != null)
         {
             path = new AIPath(waypoints, transform.position, turnDst, stoppingDst);
             StopCoroutine("FollowPath");
@@ -106,7 +106,6 @@ public class Unit : MonoBehaviour
                 curMovDir = movDirection;
                 transform.position += (Vector3)(movDirection.normalized * Time.deltaTime * speed * speedPercent); //Vector2.MoveTowards(transform.position, movDirection, Time.deltaTime * speed * speedPercent);
 
-                Debug.Log(movDirection.x + " " + movDirection.y);
                 if (Mathf.Abs(movDirection.x) > .5 ||
                     Mathf.Abs(movDirection.y) > .5)
                 {

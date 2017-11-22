@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
+    int intMaxHP;
     public int intHP;
     Animator animator;
+    public float fPotionFragmentsForKill;
 
 	void Start ()
     {
+        intMaxHP = intHP;
         animator = GetComponent<Animator>();
 	}
 	
@@ -16,6 +19,11 @@ public class HealthSystem : MonoBehaviour
     {
 		if (intHP <= 0)
         {
+            if (gameObject.tag != "Player")
+            {
+                ItemManager.fPotionFragments += fPotionFragmentsForKill;
+            }
+
             if (animator != null &&
                 animator.HasState(1, Animator.StringToHash("Destroy")))
             {
@@ -44,5 +52,10 @@ public class HealthSystem : MonoBehaviour
     public void subReceiveDamage(int intDamage)
     {
         intHP -= intDamage;
+    }
+
+    public void subRecoverHP(int intPointsToRecover)
+    {
+        intHP = Mathf.Min(intMaxHP, intHP + intPointsToRecover);
     }
 }

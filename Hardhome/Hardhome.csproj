@@ -238,6 +238,7 @@
     <Compile Include="Assets\Scripts\Managers\CutsceneManager.cs" />
     <Compile Include="Assets\Scripts\Managers\DamageManager.cs" />
     <Compile Include="Assets\Scripts\Managers\DialogueManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\ItemManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PathRequestManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
