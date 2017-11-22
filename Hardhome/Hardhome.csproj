@@ -222,6 +222,7 @@
     <Compile Include="Assets\Scripts\AIPath.cs" />
     <Compile Include="Assets\Scripts\AlexaThePitifulMarauder.cs" />
     <Compile Include="Assets\Scripts\Area.cs" />
+    <Compile Include="Assets\Scripts\AudioCrossfader.cs" />
     <Compile Include="Assets\Scripts\Destroyable.cs" />
     <Compile Include="Assets\Scripts\Dialogue.cs" />
     <Compile Include="Assets\Scripts\DialogueTrigger.cs" />

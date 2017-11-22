@@ -10,7 +10,7 @@ public class Warp : MonoBehaviour
     public List<GameObject> lstgoDeactivations;
     public List<GameObject> lstgoActivations;
     public AudioClip acToStart;
-    AudioSource audioSource;
+    AudioCrossfader audioCrossfader;
 
     // Para controlar si empieza o no la transición
     bool start = false;
@@ -37,7 +37,7 @@ public class Warp : MonoBehaviour
 
     private void Start()
     {
-        audioSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
+        audioCrossfader = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioCrossfader>();
     }
 
     IEnumerator OnTriggerEnter2D(Collider2D collider)
@@ -50,8 +50,7 @@ public class Warp : MonoBehaviour
 
         if (collider.tag == "Player")
         {
-            audioSource.clip = acToStart;
-            audioSource.Play();
+            audioCrossfader.CrossFade(acToStart, 1, 3);
             collider.transform.position = goTarget.transform.GetChild(0).transform.position;
             Camera.main.GetComponent<MainCamera>().subSetBounds(goTargetMap);
 
