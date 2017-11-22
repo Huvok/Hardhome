@@ -42,14 +42,14 @@ public class Warp : MonoBehaviour
 
     IEnumerator OnTriggerEnter2D(Collider2D collider)
     {
-        collider.GetComponent<Animator>().enabled = false;
-        collider.GetComponent<Player>().enabled = false;
-        FadeIn();
-
-        yield return new WaitForSeconds(fadeTime);
-
         if (collider.tag == "Player")
         {
+            collider.GetComponent<Animator>().enabled = false;
+            collider.GetComponent<Player>().enabled = false;
+            FadeIn();
+
+            yield return new WaitForSeconds(fadeTime);
+
             audioCrossfader.CrossFade(acToStart, 1, 3);
             collider.transform.position = goTarget.transform.GetChild(0).transform.position;
             Camera.main.GetComponent<MainCamera>().subSetBounds(goTargetMap);
@@ -69,13 +69,13 @@ public class Warp : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+
+            FadeOut();
+            collider.GetComponent<Animator>().enabled = true;
+            collider.GetComponent<Player>().enabled = true;
+
+            StartCoroutine(area.GetComponent<Area>().enumShowArea(goTargetMap.name));
         }
-
-        FadeOut();
-        collider.GetComponent<Animator>().enabled = true;
-        collider.GetComponent<Player>().enabled = true;
-
-        StartCoroutine(area.GetComponent<Area>().enumShowArea(goTargetMap.name));
     }
 
     void OnGUI()

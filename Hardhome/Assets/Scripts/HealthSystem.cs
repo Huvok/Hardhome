@@ -22,6 +22,7 @@ public class HealthSystem : MonoBehaviour
             if (gameObject.tag != "Player")
             {
                 ItemManager.fPotionFragments += fPotionFragmentsForKill;
+                UIManager.subRedrawPotionFragments();
             }
 
             if (animator != null &&

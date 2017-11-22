@@ -22,6 +22,7 @@ public class ItemManager : MonoBehaviour
         {
             fPotionFragments -= 1.0f;
             intPotions++;
+            UIManager.subRedrawPotions();
         }
     }
 }
