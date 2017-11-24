@@ -21,6 +21,21 @@ public class Player : MonoBehaviour
     public GameObject goInitialMap;
     HealthSystem healthSystem;
     InvincibilityTimer invincibilityTimer;
+    public GameObject goOctahedronOfTranscendence;
+    public int intOctahedronSpeed;
+    GameObject goCurrentOctahedron;
+
+    Vector2 v2ThrowingTo;
+
+    Coroutine coroutineThrowingOctahedron;
+
+    [SerializeField]
+    GameObject goPlayerGhost;
+
+    bool boolWaitingForThrow;
+    bool boolDisableControls;
+    BoxCollider2D bc2d;
+    bool boolAttacking;
 
     private void Awake()
     {
@@ -31,6 +46,7 @@ public class Player : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
+        bc2d = GetComponent<BoxCollider2D>();
 
         attackCollider = transform.GetChild(0).GetComponent<PolygonCollider2D>();
         attackCollider.enabled = false;
@@ -40,11 +56,14 @@ public class Player : MonoBehaviour
         cutsceneManager = GameObject.FindGameObjectWithTag("Cutscene Manager").GetComponent<CutsceneManager>();
         healthSystem = GetComponent<HealthSystem>();
         invincibilityTimer = GetComponent<InvincibilityTimer>();
+        boolWaitingForThrow = false;
+        boolDisableControls = false;
 	}
 
 	void Update ()
     {
-        if (!dialogueManager.boolOnDialogue)
+        if (!dialogueManager.boolOnDialogue &&
+            !boolDisableControls)
         {
             v2Mov = new Vector2(
                 Input.GetAxisRaw("Horizontal"),
@@ -63,11 +82,28 @@ public class Player : MonoBehaviour
             }
 
             AnimatorStateInfo animStateInfo = anim.GetCurrentAnimatorStateInfo(0);
-            bool boolAttacking = animStateInfo.IsName("Player Attack");
+            boolAttacking = animStateInfo.IsName("Player Attack");
 
             if (Input.GetMouseButtonDown(0) && !boolAttacking)
             {
                 anim.SetTrigger("Attack");
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                v2ThrowingTo = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                if (ItemManager.octahedron_state == ItemManager.OCTAHEDRON_STATE.PLAYER)
+                {
+                    boolWaitingForThrow = true;
+                    ItemManager.octahedron_state = ItemManager.OCTAHEDRON_STATE.GOING;
+                    anim.SetTrigger("triggerThrowOctahedron");
+                }
+                else if (ItemManager.octahedron_state == ItemManager.OCTAHEDRON_STATE.AWAY ||
+                    ItemManager.octahedron_state == ItemManager.OCTAHEDRON_STATE.GOING)
+                {
+                    subGoToOctahedron();
+                }
             }
 
             if (v2Mov != Vector2.zero)
@@ -119,8 +155,101 @@ public class Player : MonoBehaviour
                     UIManager.subRedrawPotions();
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.E) &&
+                (ItemManager.octahedron_state == ItemManager.OCTAHEDRON_STATE.AWAY ||
+                ItemManager.octahedron_state == ItemManager.OCTAHEDRON_STATE.GOING))
+            {
+                subRecoverOctahedron();
+            }
         }
 	}
+
+    public void subThrowOctahedron()
+    {
+        coroutineThrowingOctahedron = StartCoroutine(subMoveOctahedronToPoint(v2ThrowingTo));
+    }
+
+    private IEnumerator subMoveOctahedronToPoint(Vector2 v2To)
+    {
+        if (goCurrentOctahedron == null)
+            Instantiate(goOctahedronOfTranscendence, transform.position, transform.rotation);
+        goCurrentOctahedron = GameObject.FindGameObjectWithTag("Octahedron of Transcendence");
+        boolWaitingForThrow = false;
+        while ((v2To - (Vector2)goCurrentOctahedron.transform.position).sqrMagnitude > .01)
+        {
+            goCurrentOctahedron.transform.position = Vector2.MoveTowards(goCurrentOctahedron.transform.position, v2To, Time.deltaTime * intOctahedronSpeed);
+            yield return null;
+        }
+
+        ItemManager.octahedron_state = ItemManager.OCTAHEDRON_STATE.AWAY;
+    }
+
+    public void subGoToOctahedron()
+    {
+        boolDisableControls = true;
+        bc2d.enabled = false;
+        if (boolAttacking)
+        {
+            boolAttacking = false;
+            attackCollider.enabled = true;
+        }
+
+        StartCoroutine(subMoveToOctahedron());
+    }
+
+    private IEnumerator subMoveToOctahedron()
+    {
+        goCurrentOctahedron = GameObject.FindGameObjectWithTag("Octahedron of Transcendence");
+
+        while ((transform.position - goCurrentOctahedron.transform.position).sqrMagnitude > .01)
+        {
+            Instantiate(goPlayerGhost, transform.position, transform.rotation);
+            transform.position = Vector2.MoveTowards(transform.position, goCurrentOctahedron.transform.position, Time.deltaTime * intOctahedronSpeed);
+            yield return null;
+        }
+
+        ItemManager.octahedron_state = ItemManager.OCTAHEDRON_STATE.PLAYER;
+        Destroy(goCurrentOctahedron);
+        bc2d.enabled = true;
+        boolDisableControls = false;
+        if (attackCollider.enabled)
+            attackCollider.enabled = false;
+    }
+
+    private void subRecoverOctahedron()
+    {
+        ItemManager.octahedron_state = ItemManager.OCTAHEDRON_STATE.COMING;
+        StartCoroutine(subMoveOctahedronToMe());
+    }
+
+    private IEnumerator subMoveOctahedronToMe()
+    {
+        while (boolWaitingForThrow)
+        {
+            yield return null;
+        }
+
+        goCurrentOctahedron = GameObject.FindGameObjectWithTag("Octahedron of Transcendence");
+
+        while ((transform.position - goCurrentOctahedron.transform.position).sqrMagnitude > .01)
+        {
+            if (coroutineThrowingOctahedron != null)
+                StopCoroutine(coroutineThrowingOctahedron);
+
+            goCurrentOctahedron.transform.position = Vector2.MoveTowards(goCurrentOctahedron.transform.position, transform.position, Time.deltaTime * intOctahedronSpeed);
+            yield return null;
+        }
+        
+        if (goCurrentOctahedron != null)
+        {
+            Destroy(goCurrentOctahedron.transform.GetChild(0).gameObject, 1.0f);
+            goCurrentOctahedron.transform.DetachChildren();
+            Destroy(goCurrentOctahedron);
+        }
+            
+        ItemManager.octahedron_state = ItemManager.OCTAHEDRON_STATE.PLAYER;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
