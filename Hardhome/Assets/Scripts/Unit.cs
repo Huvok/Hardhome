@@ -16,17 +16,20 @@ public class Unit : MonoBehaviour
 
     AIPath path;
     Animator animator;
+    bool boolDestroyed;
 
     private void Start()
     {
         StartCoroutine(UpdatePath());
         target = GameObject.FindGameObjectWithTag("Player").transform;
         animator = GetComponent<Animator>();
+        boolDestroyed = false;
     }
 
     public void OnPathFound(Vector2[] waypoints, bool pathSuccessful)
     {
-        if (pathSuccessful && gameObject != null)
+        if (pathSuccessful &&
+            !boolDestroyed)
         {
             path = new AIPath(waypoints, transform.position, turnDst, stoppingDst);
             StopCoroutine("FollowPath");
@@ -153,5 +156,6 @@ public class Unit : MonoBehaviour
     private void OnDestroy()
     {
         StopAllCoroutines();
+        boolDestroyed = true;
     }
 }

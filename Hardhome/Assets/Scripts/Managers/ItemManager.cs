@@ -9,6 +9,7 @@ public class ItemManager : MonoBehaviour
     public static float fPotionFragments;
     public int PotionStrength;
     public static int intPotionStrength;
+    public static OCTAHEDRON_STATE octahedron_state;
 
     private void Awake()
     {
@@ -24,5 +25,13 @@ public class ItemManager : MonoBehaviour
             intPotions++;
             UIManager.subRedrawPotions();
         }
+    }
+
+    public enum OCTAHEDRON_STATE
+    {
+        PLAYER,
+        COMING,
+        GOING,
+        AWAY
     }
 }
