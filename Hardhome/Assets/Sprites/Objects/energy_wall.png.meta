@@ -1,0 +1,295 @@
+fileFormatVersion: 2
+guid: aca0f36658e321e4fb611da89aa335a8
+timeCreated: 1511764759
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: energy_wall_0
+    21300002: energy_wall_1
+    21300004: energy_wall_2
+    21300006: energy_wall_3
+    21300008: energy_wall_4
+    21300010: energy_wall_5
+    21300012: energy_wall_6
+    21300014: energy_wall_7
+    21300016: energy_wall_8
+    21300018: energy_wall_9
+    21300020: energy_wall_10
+    21300022: energy_wall_11
+    21300024: energy_wall_12
+    21300026: energy_wall_13
+    21300028: energy_wall_14
+    21300030: energy_wall_15
+    21300032: energy_wall_16
+    21300034: energy_wall_17
+    21300036: energy_wall_18
+    21300038: energy_wall_19
+    21300040: energy_wall_20
+    21300042: energy_wall_21
+    21300044: energy_wall_22
+    21300046: energy_wall_23
+    21300048: energy_wall_24
+    21300050: energy_wall_25
+    21300052: energy_wall_26
+    21300054: energy_wall_27
+    21300056: energy_wall_28
+    21300058: energy_wall_29
+    21300060: energy_wall_30
+    21300062: energy_wall_31
+    21300064: energy_wall_32
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: energy_wall_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 352
+        width: 57
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: energy_wall_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 352
+        width: 57
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: energy_wall_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 319
+        width: 57
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: energy_wall_3
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 319
+        width: 57
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: energy_wall_4
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 105
+        width: 19
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: energy_wall_5
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 105
+        width: 20
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5260197, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: energy_wall_6
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 105
+        width: 21
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5409964, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: energy_wall_7
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 105
+        width: 20
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5260197, y: 0.5032524}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: energy_wall_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9
+        width: 17
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: energy_wall_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 9
+        width: 19
+        height: 84
+      alignment: 9
+      pivot: {x: 0.45118853, y: 0.50000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: energy_wall_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 9
+        width: 18
+        height: 84
+      alignment: 9
+      pivot: {x: 0.4732861, y: 0.49999976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: energy_wall_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 9
+        width: 18
+        height: 84
+      alignment: 9
+      pivot: {x: 0.46565077, y: 0.49631977}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

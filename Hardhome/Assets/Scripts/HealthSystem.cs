@@ -29,10 +29,12 @@ public class HealthSystem : MonoBehaviour
             if (animator != null &&
                 animator.HasState(1, Animator.StringToHash("Destroy")))
             {
+                MapManager.subOneMoreKill();
                 StartCoroutine(subAnimateDestroying());
             }
             else
             {
+                MapManager.subOneMoreKill();
                 Destroy(gameObject);
             }
         }

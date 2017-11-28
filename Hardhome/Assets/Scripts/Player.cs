@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     GameObject goPlayerGhost;
 
     bool boolWaitingForThrow;
-    bool boolDisableControls;
+    public bool boolDisableControls;
     BoxCollider2D bc2d;
     bool boolAttacking;
 
@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
         invincibilityTimer = GetComponent<InvincibilityTimer>();
         boolWaitingForThrow = false;
         boolDisableControls = false;
+        MapManager.strCurrentMap = goInitialMap.name;
 	}
 
 	void Update ()
@@ -298,5 +299,10 @@ public class Player : MonoBehaviour
     public void subTriggerNextOnQueue()
     {
         cutsceneManager.subTriggerNextOnQueue();
+    }
+
+    public void subUnlockControls()
+    {
+        cutsceneManager.subUnlockControls();
     }
 }

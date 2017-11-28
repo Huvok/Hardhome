@@ -31,7 +31,6 @@ public class Warp : MonoBehaviour
         transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
 
         Assert.IsNotNull(goTargetMap);
-
         area = GameObject.FindGameObjectWithTag("Zone Name");
     }
 
@@ -73,7 +72,7 @@ public class Warp : MonoBehaviour
             FadeOut();
             collider.GetComponent<Animator>().enabled = true;
             collider.GetComponent<Player>().enabled = true;
-
+            MapManager.strCurrentMap = goTargetMap.name;
             StartCoroutine(area.GetComponent<Area>().enumShowArea(goTargetMap.name));
         }
     }

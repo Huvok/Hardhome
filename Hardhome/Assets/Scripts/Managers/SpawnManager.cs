@@ -21,6 +21,7 @@ public class SpawnManager : MonoBehaviour
         {
             subSpawnEnemies();
             boolHasSpawned = true;
+            subExecuteBasedOnCurrentMap();
         }
     }
 
@@ -35,6 +36,14 @@ public class SpawnManager : MonoBehaviour
         for (int i = 0; i < lsttransformEnemyPositions.Count; i++)
         {
             Instantiate(goEnemyToSpawn, lsttransformEnemyPositions[i].position, lsttransformEnemyPositions[i].rotation);
+        }
+    }
+
+    void subExecuteBasedOnCurrentMap()
+    {
+        if (MapManager.strCurrentMap == "Ancient Grove")
+        {
+            MapManager.subActivateWalls(MapManager.strCurrentMap);
         }
     }
 } 

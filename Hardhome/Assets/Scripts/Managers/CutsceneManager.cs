@@ -19,6 +19,7 @@ public class CutsceneManager : MonoBehaviour
     Dictionary<string, Animator> dictAnimators;
     Text goAlertMessage;
     HashSet<String> setHasDescription;
+    Player player;
 
 	void Start ()
     {
@@ -31,18 +32,23 @@ public class CutsceneManager : MonoBehaviour
         goAlertMessage = GameObject.FindGameObjectWithTag("Alert Message").transform.GetChild(0).GetComponent<Text>();
         setHasDescription = new HashSet<string>();
         subPopulateDescriptionSet();
+        player = goPlayer.GetComponent<Player>();
     }
 	
 	void Update ()
     {
 		if (!boolIntroAnimPlayed)
         {
+            subLockControls();
             boolIntroAnimPlayed = true;
             animPlayer.Play("Intro_Getting_Up");
             t = 0;
             q.Enqueue(new pair("Player", "Intro_Walking_To_Knight"));
             q.Enqueue(new pair("Player", "Get_Item_Intro_AS"));
             q.Enqueue(new pair("Player", "Player_Idle_Up_No_Cape"));
+            q.Enqueue(new pair("Player", "Get_Item_Intro_KC"));
+            q.Enqueue(new pair("Player", "Player_Idle_Up"));
+            q.Enqueue(new pair("Player", "Player_Dummy"));
         }
 
         if (animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Intro_Walking_To_Knight"))
@@ -50,6 +56,16 @@ public class CutsceneManager : MonoBehaviour
             subMovePlayerToPoint(new Vector2(0f, 0f), new Vector2(-2.93f, 2.93f), animPlayer.GetCurrentAnimatorStateInfo(0).length);
         }
 	}
+
+    public void subLockControls()
+    {
+        player.boolDisableControls = true;
+    }
+
+    public void subUnlockControls()
+    {
+        player.boolDisableControls = false;
+    }
 
     public void subTriggerDialogue(string strDialogue)
     {
