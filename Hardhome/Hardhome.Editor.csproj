@@ -268,6 +268,9 @@
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>Library\UnityAssemblies\UnityEditor.Purchasing.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-UnityScript">
+      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Hardhome.csproj">
@@ -293,6 +296,7 @@
   <ItemGroup>
     <None Include="Assets\Tiled2Unity\Imported\DummyMap1.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\DummyMap2.tiled2unity.xml" />
+    <None Include="Assets\Tiled2Unity\Imported\Intro Cinematic.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\Tutorial.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
     <None Include="Assets\Tiled2Unity\Imported\centro2.tiled2unity.xml" />

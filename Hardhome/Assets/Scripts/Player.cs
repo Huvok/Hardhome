@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Assertions;
 
 public class Player : MonoBehaviour
@@ -37,11 +38,6 @@ public class Player : MonoBehaviour
     BoxCollider2D bc2d;
     bool boolAttacking;
 
-    private void Awake()
-    {
-        Assert.IsNotNull(goInitialMap);
-    }
-
     void Start ()
     {
         anim = GetComponent<Animator>();
@@ -53,17 +49,18 @@ public class Player : MonoBehaviour
 
         Camera.main.GetComponent<MainCamera>().subSetBounds(goInitialMap);
         dialogueManager = GameObject.FindGameObjectWithTag("Dialogue Manager").GetComponent<DialogueManager>();
+
         cutsceneManager = GameObject.FindGameObjectWithTag("Cutscene Manager").GetComponent<CutsceneManager>();
+
         healthSystem = GetComponent<HealthSystem>();
         invincibilityTimer = GetComponent<InvincibilityTimer>();
         boolWaitingForThrow = false;
-        boolDisableControls = false;
         MapManager.strCurrentMap = goInitialMap.name;
 	}
 
 	void Update ()
     {
-        if (!dialogueManager.boolOnDialogue &&
+        if (!DialogueManager.boolOnDialogue &&
             !boolDisableControls)
         {
             v2Mov = new Vector2(
@@ -166,6 +163,15 @@ public class Player : MonoBehaviour
         }
 	}
 
+    public void subDisableControls(bool boolDisable)
+    {
+        if (boolDisable)
+        {
+            v2Mov = Vector2.zero;
+            boolDisableControls = true;
+        }
+    }
+
     public void subThrowOctahedron()
     {
         coroutineThrowingOctahedron = StartCoroutine(subMoveOctahedronToPoint(v2ThrowingTo));
@@ -177,7 +183,7 @@ public class Player : MonoBehaviour
             Instantiate(goOctahedronOfTranscendence, transform.position, transform.rotation);
         goCurrentOctahedron = GameObject.FindGameObjectWithTag("Octahedron of Transcendence");
         boolWaitingForThrow = false;
-        while ((v2To - (Vector2)goCurrentOctahedron.transform.position).sqrMagnitude > .01)
+        while ((v2To - (Vector2)goCurrentOctahedron.transform.position).sqrMagnitude > .1)
         {
             goCurrentOctahedron.transform.position = Vector2.MoveTowards(goCurrentOctahedron.transform.position, v2To, Time.deltaTime * intOctahedronSpeed);
             yield return null;
@@ -203,7 +209,7 @@ public class Player : MonoBehaviour
     {
         goCurrentOctahedron = GameObject.FindGameObjectWithTag("Octahedron of Transcendence");
 
-        while ((transform.position - goCurrentOctahedron.transform.position).sqrMagnitude > .01)
+        while ((transform.position - goCurrentOctahedron.transform.position).sqrMagnitude > .1)
         {
             Instantiate(goPlayerGhost, transform.position, transform.rotation);
             transform.position = Vector2.MoveTowards(transform.position, goCurrentOctahedron.transform.position, Time.deltaTime * intOctahedronSpeed);
@@ -304,5 +310,10 @@ public class Player : MonoBehaviour
     public void subUnlockControls()
     {
         cutsceneManager.subUnlockControls();
+    }
+
+    public void subTriggerEvent(string str)
+    {
+        cutsceneManager.subTriggerEvent(str);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //                                                          //AUTHOR: Hugo Garcia 
 //                                                          //Date: 11/18/2017 
@@ -20,26 +21,80 @@ public class CutsceneManager : MonoBehaviour
     Text goAlertMessage;
     HashSet<String> setHasDescription;
     Player player;
+    public RawImage image;
+    GameObject area;
 
-	void Start ()
+    // Para controlar si empieza o no la transición
+    bool start = true;
+    // Para controlar si la transición es de entrada o salida
+    bool isFadeIn = false;
+    // Opacidad inicial del cuadrado de transición
+    float alpha = 1f;
+    // Transición de .8 segundo
+    float fadeTime = .8f;
+
+    void Start ()
     {
         goPlayer = GameObject.FindGameObjectWithTag("Player");
         animPlayer = goPlayer.GetComponent<Animator>();
         q = new Queue<pair>();
         dictAnimators = new Dictionary<string, Animator>();
         dictAnimators.Add("Player", animPlayer);
-        dictAnimators.Add("Alert Message", GameObject.FindGameObjectWithTag("Alert Message").GetComponent<Animator>());
-        goAlertMessage = GameObject.FindGameObjectWithTag("Alert Message").transform.GetChild(0).GetComponent<Text>();
         setHasDescription = new HashSet<string>();
         subPopulateDescriptionSet();
         player = goPlayer.GetComponent<Player>();
+
+        if (SceneManager.GetActiveScene().name == "Scene 1")
+        {
+            dictAnimators.Add("Alert Message", GameObject.FindGameObjectWithTag("Alert Message").GetComponent<Animator>());
+            goAlertMessage = GameObject.FindGameObjectWithTag("Alert Message").transform.GetChild(0).GetComponent<Text>();
+            area = area = GameObject.FindGameObjectWithTag("Zone Name");
+            subStartGameplay();
+        }
+        else
+        {
+            subStartIntro();
+        }
     }
 	
 	void Update ()
     {
-		if (!boolIntroAnimPlayed)
+        if (animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Intro_Walking_To_Knight"))
+        {
+            subMovePlayerToPoint(new Vector2(0f, 0f), new Vector2(-2.93f, 2.93f), animPlayer.GetCurrentAnimatorStateInfo(0).length);
+        }
+	}
+
+    void OnGUI()
+    {
+        if (!start) return;
+        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, alpha);
+
+        Texture2D tex;
+        tex = new Texture2D(1, 1);
+        tex.SetPixel(0, 0, Color.black);
+        tex.Apply();
+
+        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), tex);
+
+        if (isFadeIn)
+        {
+            alpha = Mathf.Lerp(alpha, 1.1f, fadeTime * Time.deltaTime);
+        }
+        else
+        {
+            alpha = Mathf.Lerp(alpha, -0.1f, fadeTime * Time.deltaTime);
+            if (alpha < 0) start = false;
+        }
+    }
+
+    void subStartGameplay()
+    {
+        if (!boolIntroAnimPlayed)
         {
             subLockControls();
+            GameObject area = GameObject.FindGameObjectWithTag("Zone Name");
+            StartCoroutine(area.GetComponent<Area>().enumShowArea("Ancient Grove"));
             boolIntroAnimPlayed = true;
             animPlayer.Play("Intro_Getting_Up");
             t = 0;
@@ -50,12 +105,14 @@ public class CutsceneManager : MonoBehaviour
             q.Enqueue(new pair("Player", "Player_Idle_Up"));
             q.Enqueue(new pair("Player", "Player_Dummy"));
         }
+    }
 
-        if (animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Intro_Walking_To_Knight"))
-        {
-            subMovePlayerToPoint(new Vector2(0f, 0f), new Vector2(-2.93f, 2.93f), animPlayer.GetCurrentAnimatorStateInfo(0).length);
-        }
-	}
+    void subStartIntro()
+    {
+        subLockControls();
+        animPlayer.Play("Walking_To_Alexa");
+        q.Enqueue(new pair("Player", "Running_Away"));
+    }
 
     public void subLockControls()
     {
@@ -112,6 +169,81 @@ public class CutsceneManager : MonoBehaviour
     {
         setHasDescription.Add("Alexa's Scarf");
         setHasDescription.Add("The Order's Cape");
+    }
+
+    public void subTriggerEvent(string str)
+    {
+        if (str == "Load Scene-Intro Image")
+        {
+            StartCoroutine(subLoadScene("Intro Image"));
+        }
+    }
+
+    IEnumerator subLoadScene(string strScene)
+    {
+        GameObject[] arrGo = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject go in arrGo)
+        {
+            go.GetComponent<Animator>().Play("FL_Following_Kos");
+            yield return new WaitForSeconds(.5f);
+        }
+
+        yield return new WaitForSeconds(1);
+        FadeIn();
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(strScene);
+    }
+
+    void FadeIn()
+    {
+        start = true;
+        isFadeIn = true;
+    }
+
+    void FadeOut()
+    {
+        isFadeIn = false;
+    }
+
+    public void subTriggerCutscene(string str)
+    {
+        if (str == "Alexa Boss Fight")
+        {
+            player.subDisableControls(true);
+            image.gameObject.SetActive(true);
+            image.GetComponent<Animator>().Play("Image_Fade_In");
+            StartCoroutine(subWaitForDialogueEndThen(() => subDisableImageAndTriggerBossFight("Alexa, the Pitiful Marauder")));
+        }
+    }
+
+    private void subDisableImageAndTriggerBossFight(string strBossName)
+    {
+        StartCoroutine(subFadeImageOutAndTriggerBossFight(strBossName));
+    }
+
+    IEnumerator subFadeImageOutAndTriggerBossFight(string strBossName)
+    {
+        Animator an = image.GetComponent<Animator>();
+        an.Play("Image_Fade_Out");
+        yield return new WaitForSeconds(1);
+        image.gameObject.SetActive(false);
+        player.boolDisableControls = false;
+        StartCoroutine(area.GetComponent<Area>().enumShowArea(strBossName));
+        GameObject.FindGameObjectWithTag("Alexa, the Pitiful Marauder").GetComponent<Unit>().enabled = true;
+        GameObject.FindGameObjectWithTag("Alexa, the Pitiful Marauder").GetComponent<AlexaThePitifulMarauder>().enabled = true;
+    }
+
+    IEnumerator subWaitForDialogueEndThen(Action action)
+    {
+        yield return new WaitForSeconds(1);
+        subTriggerDialogue("Alexa, the Pitiful Marauder 1");
+        while (DialogueManager.boolOnDialogue)
+        {
+            yield return null;
+        }
+
+        action.Invoke();
     }
 }
 

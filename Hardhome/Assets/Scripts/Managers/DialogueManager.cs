@@ -9,7 +9,7 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text dialogueText;
     public Animator animator;
-    public bool boolOnDialogue;
+    public static bool boolOnDialogue;
     CutsceneManager cutsceneManager;
     bool boolTriggersAnimation;
 

@@ -221,6 +221,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AIPath.cs" />
     <Compile Include="Assets\Scripts\AlexaThePitifulMarauder.cs" />
+    <Compile Include="Assets\Scripts\AnimationTrigger.cs" />
     <Compile Include="Assets\Scripts\Area.cs" />
     <Compile Include="Assets\Scripts\AudioCrossfader.cs" />
     <Compile Include="Assets\Scripts\Destroyable.cs" />
@@ -235,6 +236,7 @@
     <Compile Include="Assets\Scripts\Heap.cs" />
     <Compile Include="Assets\Scripts\InvincibilityTimer.cs" />
     <Compile Include="Assets\Scripts\Line.cs" />
+    <Compile Include="Assets\Scripts\Main Menu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\MainCamera.cs" />
     <Compile Include="Assets\Scripts\Managers\CutsceneManager.cs" />
     <Compile Include="Assets\Scripts\Managers\DamageManager.cs" />
@@ -247,6 +249,7 @@
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerGhost.cs" />
+    <Compile Include="Assets\Scripts\StreamVideo.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
     <Compile Include="Assets\Scripts\Warp.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
@@ -271,6 +274,7 @@
   <ItemGroup>
     <None Include="Assets\Tiled2Unity\Imported\DummyMap1.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\DummyMap2.tiled2unity.xml" />
+    <None Include="Assets\Tiled2Unity\Imported\Intro Cinematic.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\Tutorial.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
     <None Include="Assets\Tiled2Unity\Imported\centro2.tiled2unity.xml" />
