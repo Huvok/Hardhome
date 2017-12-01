@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
     AudioSource audioSourceOctahedron;
     public AudioClip[] arrAudioClipOctahedron;
     PauseManager pauseManager;
+    public Vector2 v2LastValidCoordinate;
 
     void Start ()
     {
@@ -113,6 +114,7 @@ public class Player : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 v2ThrowingTo = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                v2LastValidCoordinate = gameObject.transform.position;
 
                 if (ItemManager.octahedron_state == ItemManager.OCTAHEDRON_STATE.PLAYER)
                 {
@@ -310,6 +312,12 @@ public class Player : MonoBehaviour
             v2ForceReceivedDirection = -v2ForceReceivedDirection.normalized;
             intForceReceived = DamageManager.intGetForce(strSource);
             fForceReceivedTimer = 0.1f;
+        }
+        else if (collision.tag == "Water")
+        {
+            healthSystem.subReceiveDamage(10);
+            gameObject.transform.position = v2LastValidCoordinate;
+            anim.Play("Receive_Damage");
         }
     }
 

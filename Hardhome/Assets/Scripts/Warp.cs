@@ -37,6 +37,7 @@ public class Warp : MonoBehaviour
     private void Start()
     {
         audioCrossfader = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioCrossfader>();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().v2LastValidCoordinate = GameObject.FindGameObjectWithTag("Player").gameObject.transform.position;
     }
 
     IEnumerator OnTriggerEnter2D(Collider2D collider)

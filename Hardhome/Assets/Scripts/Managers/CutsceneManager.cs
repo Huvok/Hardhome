@@ -196,7 +196,7 @@ public class CutsceneManager : MonoBehaviour
     IEnumerator subLoadScene(string strScene)
     {
         GameObject[] arrGo = GameObject.FindGameObjectsWithTag("Enemy");
-
+        goPlayer.GetComponent<BoxCollider2D>().enabled = false;
         foreach (GameObject go in arrGo)
         {
             go.GetComponent<Animator>().Play("FL_Following_Kos");
@@ -205,7 +205,8 @@ public class CutsceneManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         FadeIn();
-        yield return new WaitForSeconds(1);
+        StartCoroutine(subFadeAudioSource(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>()));
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(strScene);
     }
 

@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
 
 	void Start ()
     {
-        boolForsakenFieldCleared = true;
-        boolSweptCathedralCleared = true;
+        boolForsakenFieldCleared = false;
+        boolSweptCathedralCleared = false;
 	}
 	
 	void Update ()
@@ -28,5 +28,10 @@ public class GameManager : MonoBehaviour
     public void subLoadScene(string str)
     {
         SceneManager.LoadScene(str);
+    }
+
+    public void subQuitGame()
+    {
+        Application.Quit();
     }
 }
