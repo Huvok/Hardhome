@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--Tiled2Unity generated xml data-->
 <!--Do not modify by hand-->
-<!--Last exported: 11/18/2017 5:09:11 PM-->
+<!--Last exported: 11/30/2017 11:48:22 AM-->
 <Tiled2Unity version="1.0.13.0">
   <AssignMaterial mesh="mapaU_mesh_0001" material="Tiles" />
   <AssignMaterial mesh="mapaU_mesh_0002" material="Tiles" />
@@ -22,6 +22,12 @@
         <PolylineObjectComponent tmx-object-id="38" tmx-object-name="" tmx-object-type="" tmx-object-x="30" tmx-object-y="62" tmx-object-width="0" tmx-object-height="0" tmx-object-rotation="0" />
         <EdgeCollider2D>
           <Points>0,0 9.5,-0.0625 9.625,0 18.1875,0 18.25,0 28,-0.1875 28.125,-22.875</Points>
+        </EdgeCollider2D>
+      </GameObject>
+      <GameObject name="PolylineObject" x="19.0625" y="-1.96875" rotation="0" layer="">
+        <PolylineObjectComponent tmx-object-id="39" tmx-object-name="" tmx-object-type="" tmx-object-x="610" tmx-object-y="63" tmx-object-width="0" tmx-object-height="0" tmx-object-rotation="0" />
+        <EdgeCollider2D>
+          <Points>0,0 -0.0625,-22.6875 -8.15625,-22.8125 -8.09375,0.0625</Points>
         </EdgeCollider2D>
       </GameObject>
       <GameObject name="PolylineObject" x="0.9375" y="-2.0625" rotation="0" layer="">

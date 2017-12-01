@@ -7,12 +7,15 @@ public class AnimationTrigger : MonoBehaviour
     GameObject goPlayer;
     Player player;
     CutsceneManager cutsceneManager;
+    AudioCrossfader audioCrossfader;
+    public AudioClip acToStart;
 
 	void Start ()
     {
         goPlayer = GameObject.FindGameObjectWithTag("Player");
         player = goPlayer.GetComponent<Player>();
         cutsceneManager = GameObject.FindGameObjectWithTag("Cutscene Manager").GetComponent<CutsceneManager>();
+        audioCrossfader = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioCrossfader>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,7 +24,9 @@ public class AnimationTrigger : MonoBehaviour
         {
             if (gameObject.name == "Alexa Boss Trigger")
             {
+                audioCrossfader.CrossFade(acToStart, 1, 3);
                 cutsceneManager.subTriggerCutscene("Alexa Boss Fight");
+                Destroy(gameObject);
             }
         }
     }

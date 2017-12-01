@@ -17,6 +17,7 @@ public class AlexaThePitifulMarauder : MonoBehaviour
     HealthSystem healthSystem;
     InvincibilityTimer invincibilityTimer;
     Unit unit;
+    PolygonCollider2D attackCollider;
 
     //------------------------------------------------------------------------------------------------------------------
     private void Start()
@@ -27,6 +28,8 @@ public class AlexaThePitifulMarauder : MonoBehaviour
         healthSystem = GetComponent<HealthSystem>();
         invincibilityTimer = GetComponent<InvincibilityTimer>();
         unit = GetComponent<Unit>();
+        attackCollider = transform.GetChild(2).GetComponent<PolygonCollider2D>();
+        attackCollider.enabled = false;
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -44,6 +47,27 @@ public class AlexaThePitifulMarauder : MonoBehaviour
             animator.SetBool("boolATPMAttacking", true);
             StartCoroutine(subATPMAttack());
         }
+
+        if (animator.GetFloat("movY") == -1.0f)
+        {
+            attackCollider.offset = new Vector2(0f, -.3f);
+            transform.GetChild(2).transform.localEulerAngles = new Vector3(0, 0, 0);
+        }
+        else if (animator.GetFloat("movX") == -1.0f)
+        {
+            attackCollider.offset = new Vector2(0f, 0f);
+            transform.GetChild(2).transform.localEulerAngles = new Vector3(0, 0, -90);
+        }
+        else if (animator.GetFloat("movX") == 1.0f)
+        {
+            attackCollider.offset = new Vector2(0f, 0f);
+            transform.GetChild(2).transform.localEulerAngles = new Vector3(0, 0, 90);
+        }
+        else if (animator.GetFloat("movY") == 1.0f)
+        {
+            attackCollider.offset = new Vector2(0f, -.3f);
+            transform.GetChild(2).transform.localEulerAngles = new Vector3(0, 0, 180);
+        }
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -56,6 +80,8 @@ public class AlexaThePitifulMarauder : MonoBehaviour
         Vector2 v2DirToAttack = goPlayer.transform.position - transform.position;
         yield return new WaitForSeconds(.5f);
         animator.SetTrigger("triggerAttack");
+        attackCollider.enabled = true;
+
         float intTime = .2f;
 
         while (intTime > 0.0f)
@@ -66,6 +92,7 @@ public class AlexaThePitifulMarauder : MonoBehaviour
             yield return null;
         }
 
+        attackCollider.enabled = false;
         unit.speed = floatOriginalSpeed;
         animator.SetBool("boolATPMAttacking", false);
     }

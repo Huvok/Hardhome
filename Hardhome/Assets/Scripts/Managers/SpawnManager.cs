@@ -25,11 +25,6 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        boolHasSpawned = false;
-    }
-
     //------------------------------------------------------------------------------------------------------------------ 
     void subSpawnEnemies()
     {
@@ -42,6 +37,22 @@ public class SpawnManager : MonoBehaviour
     void subExecuteBasedOnCurrentMap()
     {
         if (MapManager.strCurrentMap == "Ancient Grove")
+        {
+            MapManager.subActivateWalls(MapManager.strCurrentMap);
+        }
+        else if (MapManager.strCurrentMap == "Forsaken Field")
+        {
+            MapManager.subActivateWalls(MapManager.strCurrentMap);
+        }
+        else if (MapManager.strCurrentMap == "Swept Cathedral")
+        {
+            MapManager.subActivateWalls(MapManager.strCurrentMap);
+        }
+        else if (MapManager.strCurrentMap == "Silent Ghetto")
+        {
+            MapManager.subActivateWalls(MapManager.strCurrentMap);
+        }
+        else if (MapManager.strCurrentMap == "Hope Prelude")
         {
             MapManager.subActivateWalls(MapManager.strCurrentMap);
         }

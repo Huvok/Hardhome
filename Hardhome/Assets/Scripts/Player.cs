@@ -38,11 +38,24 @@ public class Player : MonoBehaviour
     BoxCollider2D bc2d;
     bool boolAttacking;
 
+    public AudioClip[] arrAudioClip;
+    public AudioClip[] arrAudioClipSwordSlash;
+    public AudioClip audioClipHealingPotion;
+    AudioSource audioSourceFootsteps;
+    AudioSource audioSourceSwordSlash;
+    AudioSource audioSourceMisc;
+    AudioSource audioSourceOctahedron;
+    public AudioClip[] arrAudioClipOctahedron;
+
     void Start ()
     {
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         bc2d = GetComponent<BoxCollider2D>();
+        audioSourceFootsteps = transform.GetChild(1).GetComponent<AudioSource>();
+        audioSourceSwordSlash = transform.GetChild(2).GetComponent<AudioSource>();
+        audioSourceMisc = transform.GetChild(3).GetComponent<AudioSource>();
+        audioSourceOctahedron = transform.GetChild(5).GetComponent<AudioSource>();
 
         attackCollider = transform.GetChild(0).GetComponent<PolygonCollider2D>();
         attackCollider.enabled = false;
@@ -73,6 +86,11 @@ public class Player : MonoBehaviour
                 anim.SetFloat("movX", v2Mov.x);
                 anim.SetFloat("movY", v2Mov.y);
                 anim.SetBool("boolPlayerWalking", true);
+                if (!audioSourceFootsteps.isPlaying)
+                {
+                    audioSourceFootsteps.clip = arrAudioClip[Random.Range(0, arrAudioClip.Length)];
+                    audioSourceFootsteps.Play();
+                }
             }
             else
             {
@@ -85,6 +103,8 @@ public class Player : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && !boolAttacking)
             {
                 anim.SetTrigger("Attack");
+                audioSourceSwordSlash.clip = arrAudioClipSwordSlash[Random.Range(0, arrAudioClipSwordSlash.Length)];
+                audioSourceSwordSlash.Play();
             }
 
             if (Input.GetMouseButtonDown(1))
@@ -93,6 +113,8 @@ public class Player : MonoBehaviour
 
                 if (ItemManager.octahedron_state == ItemManager.OCTAHEDRON_STATE.PLAYER)
                 {
+                    audioSourceOctahedron.clip = arrAudioClipOctahedron[0];
+                    audioSourceOctahedron.Play();
                     boolWaitingForThrow = true;
                     ItemManager.octahedron_state = ItemManager.OCTAHEDRON_STATE.GOING;
                     anim.SetTrigger("triggerThrowOctahedron");
@@ -100,6 +122,8 @@ public class Player : MonoBehaviour
                 else if (ItemManager.octahedron_state == ItemManager.OCTAHEDRON_STATE.AWAY ||
                     ItemManager.octahedron_state == ItemManager.OCTAHEDRON_STATE.GOING)
                 {
+                    audioSourceOctahedron.clip = arrAudioClipOctahedron[1];
+                    audioSourceOctahedron.Play();
                     subGoToOctahedron();
                 }
             }
@@ -148,6 +172,8 @@ public class Player : MonoBehaviour
             {
                 if (ItemManager.intPotions > 0)
                 {
+                    audioSourceMisc.clip = audioClipHealingPotion;
+                    audioSourceMisc.Play();
                     ItemManager.intPotions--;
                     healthSystem.subRecoverHP(ItemManager.intPotionStrength);
                     UIManager.subRedrawPotions();
@@ -158,6 +184,8 @@ public class Player : MonoBehaviour
                 (ItemManager.octahedron_state == ItemManager.OCTAHEDRON_STATE.AWAY ||
                 ItemManager.octahedron_state == ItemManager.OCTAHEDRON_STATE.GOING))
             {
+                audioSourceOctahedron.clip = arrAudioClipOctahedron[2];
+                audioSourceOctahedron.Play();
                 subRecoverOctahedron();
             }
         }
@@ -208,6 +236,11 @@ public class Player : MonoBehaviour
     private IEnumerator subMoveToOctahedron()
     {
         goCurrentOctahedron = GameObject.FindGameObjectWithTag("Octahedron of Transcendence");
+        while (goCurrentOctahedron == null)
+        {
+            goCurrentOctahedron = GameObject.FindGameObjectWithTag("Octahedron of Transcendence");
+            yield return null;
+        }
 
         while ((transform.position - goCurrentOctahedron.transform.position).sqrMagnitude > .1)
         {

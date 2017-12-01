@@ -8,17 +8,24 @@ public class HealthSystem : MonoBehaviour
     public int intHP;
     Animator animator;
     public float fPotionFragmentsForKill;
+    public ParticleSystem particleSystemDestroy;
+    bool boolDestroying;
+    public AudioClip[] arrAudioClipDamage;
+    public AudioSource audioSourceDamage;
 
 	void Start ()
     {
         intMaxHP = intHP;
         animator = GetComponent<Animator>();
+        boolDestroying = false;
 	}
 	
 	void Update ()
     {
-		if (intHP <= 0)
+		if (intHP <= 0 &&
+            !boolDestroying)
         {
+            boolDestroying = true;
             if (gameObject.tag != "Player")
             {
                 if (ItemManager.intPotions < 5) ItemManager.fPotionFragments += fPotionFragmentsForKill;
@@ -44,17 +51,30 @@ public class HealthSystem : MonoBehaviour
     {
         animator.Play("Destroy");
 
-        while (animator.GetCurrentAnimatorStateInfo(0).IsName("Destroy"))
-        {
-            yield return null;
-        }
+        yield return new WaitForSeconds(1f);
 
-        if (gameObject.tag != "Player")
+        Destroy(Instantiate(particleSystemDestroy, transform.position, transform.rotation), 2f);
+
+        if (gameObject.tag == "Player")
+        {
             Destroy(gameObject);
+        }
+        else if (gameObject.tag == "Alexa, the Pitiful Marauder")
+        {
+            Destroy(gameObject);
+            yield return new WaitForSeconds(3f);
+            GameObject.FindGameObjectWithTag("Cutscene Manager").GetComponent<CutsceneManager>().subTriggerEnding();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void subReceiveDamage(int intDamage)
     {
+        audioSourceDamage.clip = arrAudioClipDamage[Random.Range(0, arrAudioClipDamage.Length)];
+        audioSourceDamage.Play();
         intHP -= intDamage;
     }
 

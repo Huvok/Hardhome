@@ -81,7 +81,7 @@ public class FrenzyLantern : MonoBehaviour
             invincibilityTimer.fInvincibleTime = .3f;
             int intDamage = DamageManager.intGetDamage(col.tag);
             healthSystem.subReceiveDamage(intDamage);
-            animator.Play("FL_Receive_Damage");
+            if (healthSystem.intHP > 0) animator.Play("FL_Receive_Damage");
             int intForceReceived = DamageManager.intGetForce(col.tag);
             if (goPlayer.transform.GetChild(0).transform.localEulerAngles.z == 90)
             {

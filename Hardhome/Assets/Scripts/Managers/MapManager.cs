@@ -52,9 +52,21 @@ public class MapManager : MonoBehaviour
         dictKillCountNeeded[strCurrentMap]--;
         if (dictKillCountNeeded[strCurrentMap] <= 0)
         {
-            if (strCurrentMap == "Ancient Grove")
+            if (strCurrentMap == "Ancient Grove" ||
+                strCurrentMap == "Forsaken Field" ||
+                strCurrentMap == "Swept Cathedral" ||
+                strCurrentMap == "Silent Ghetto")
             {
                 subDeactivateWalls(strCurrentMap);
+            }
+
+            if (strCurrentMap == "Forsaken Field")
+            {
+                GameManager.boolForsakenFieldCleared = true;
+            }
+            else if (strCurrentMap == "Swept Cathedral")
+            {
+                GameManager.boolSweptCathedralCleared = true;
             }
         }
     }

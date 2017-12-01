@@ -40,7 +40,8 @@ public class UIManager : MonoBehaviour
             goPotionsUI.transform.GetChild(i).transform.GetChild(1).gameObject.GetComponent<Image>().enabled = false;
         }
 
-        goPotionsUI.transform.GetChild(ItemManager.intPotions).transform.GetChild(0).GetComponent<Image>().fillAmount = Mathf.Min(1.0f, ItemManager.fPotionFragments);
+        if (ItemManager.intPotions < goPotionsUI.transform.childCount)
+            goPotionsUI.transform.GetChild(ItemManager.intPotions).transform.GetChild(0).GetComponent<Image>().fillAmount = Mathf.Min(1.0f, ItemManager.fPotionFragments);
     }
 
     public static void subRedrawPotionFragments()

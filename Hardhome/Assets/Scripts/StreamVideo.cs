@@ -13,6 +13,9 @@ public class StreamVideo : MonoBehaviour
     private VideoSource videoSource;
     private AudioSource audioSource;
     public VideoClip videoToPlay;
+    public bool boolPauseVideo;
+    public AudioSource audioSourceExternal;
+    public GameObject goButton;
 
     void Awake ()
     {
@@ -63,8 +66,37 @@ public class StreamVideo : MonoBehaviour
         //Play Sound
         audioSource.Play();
 
+        if (boolPauseVideo)
+        {
+            yield return new WaitForSeconds(7f);
+            goButton.SetActive(true);
+            videoPlayer.Pause();
+        }
+        else
+        {
+            while (videoPlayer.isPlaying)
+            {
+                yield return null;
+            }
+
+            if (SceneManager.GetActiveScene().name == "Intro Video")
+                SceneManager.LoadScene("Intro");
+            else
+                SceneManager.LoadScene("Scene 1");
+        }
+    }
+
+    public void subLoadScene()
+    {
+        StartCoroutine(subEndVideoAndLoad());
+    }
+
+    IEnumerator subEndVideoAndLoad()
+    {
+        videoPlayer.Play();
         while (videoPlayer.isPlaying)
         {
+            audioSourceExternal.volume -= .005f;
             yield return null;
         }
 

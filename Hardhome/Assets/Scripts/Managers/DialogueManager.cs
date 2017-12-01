@@ -12,6 +12,7 @@ public class DialogueManager : MonoBehaviour
     public static bool boolOnDialogue;
     CutsceneManager cutsceneManager;
     bool boolTriggersAnimation;
+    public AudioSource audioSourceBlip;
 
 	void Start ()
     {
@@ -54,8 +55,13 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         foreach(char letter in sentence.ToCharArray())
         {
+            if (!audioSourceBlip.isPlaying)
+                audioSourceBlip.Play();
+
             dialogueText.text += letter;
-            yield return null;
+            if (letter == '.') yield return new WaitForSeconds(.1f);
+            else if (letter == ',') yield return new WaitForSeconds(.07f);
+            else yield return null;
         }
     }
 

@@ -33,6 +33,9 @@ public class CutsceneManager : MonoBehaviour
     // Transición de .8 segundo
     float fadeTime = .8f;
 
+    public AudioSource audioSourceMisc;
+    public AudioClip audioClipItemFound;
+
     void Start ()
     {
         goPlayer = GameObject.FindGameObjectWithTag("Player");
@@ -62,6 +65,11 @@ public class CutsceneManager : MonoBehaviour
         if (animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Intro_Walking_To_Knight"))
         {
             subMovePlayerToPoint(new Vector2(0f, 0f), new Vector2(-2.93f, 2.93f), animPlayer.GetCurrentAnimatorStateInfo(0).length);
+        }
+
+        if (animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Ending_Walking_To_Gate"))
+        {
+            subMovePlayerToPoint(goPlayer.transform.position, new Vector2(-2.5f, 111.8f), 5f);
         }
 	}
 
@@ -142,6 +150,8 @@ public class CutsceneManager : MonoBehaviour
 
     public void subToggleSpriteOn(string str)
     {
+        audioSourceMisc.clip = audioClipItemFound;
+        audioSourceMisc.Play();
         GameObject.Find(str).GetComponent<SpriteRenderer>().enabled = true;
         if (setHasDescription.Contains(str))
         {
@@ -213,7 +223,7 @@ public class CutsceneManager : MonoBehaviour
             player.subDisableControls(true);
             image.gameObject.SetActive(true);
             image.GetComponent<Animator>().Play("Image_Fade_In");
-            StartCoroutine(subWaitForDialogueEndThen(() => subDisableImageAndTriggerBossFight("Alexa, the Pitiful Marauder")));
+            StartCoroutine(subWaitForDialogueEndThen(() => subDisableImageAndTriggerBossFight("Alexa, the Pitiful Marauder"), "Alexa, the Pitiful Marauder 1"));
         }
     }
 
@@ -234,16 +244,41 @@ public class CutsceneManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("Alexa, the Pitiful Marauder").GetComponent<AlexaThePitifulMarauder>().enabled = true;
     }
 
-    IEnumerator subWaitForDialogueEndThen(Action action)
+    IEnumerator subWaitForDialogueEndThen(Action action, string str)
     {
         yield return new WaitForSeconds(1);
-        subTriggerDialogue("Alexa, the Pitiful Marauder 1");
+        subTriggerDialogue(str);
         while (DialogueManager.boolOnDialogue)
         {
             yield return null;
         }
 
         action.Invoke();
+    }
+
+    public void subTriggerEnding()
+    {
+        animPlayer.Play("Ending_Walking_To_Gate");
+        StartCoroutine(subWaitForDialogueEndThen(() => subLoadCredits("Credits"), "Ending 1"));
+        AudioSource audioSource = GameObject.FindGameObjectWithTag("Main Camera").GetComponent<AudioSource>();
+        StartCoroutine(subFadeAudioSource(audioSource));
+    }
+
+    IEnumerator subFadeAudioSource(AudioSource audioSource)
+    {
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= .005f;
+            yield return null;
+        }
+    }
+
+    IEnumerator subLoadCredits(string strScene)
+    {
+        yield return new WaitForSeconds(1);
+        FadeIn();
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(strScene);
     }
 }
 

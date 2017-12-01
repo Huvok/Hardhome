@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" nextobjectid="6">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" nextobjectid="10">
  <tileset firstgid="1" source="tiles.tsx"/>
  <tileset firstgid="1441" source="TreesTiles.tsx"/>
  <layer name="Background" width="30" height="30">
@@ -391,6 +391,18 @@
   </object>
   <object id="5" x="348" y="2.66667">
    <polyline points="0,0 -24,34.6667 -93.3333,37.3333 -93.3333,114.667 -132,114.667 -160,144 -164,206.667 -193.333,253.333"/>
+  </object>
+  <object id="6" x="453.333" y="302.667">
+   <polyline points="0,0 -50.6667,-2.66667"/>
+  </object>
+  <object id="7" x="457.333" y="250.667">
+   <polyline points="0,0 -56,2.66667"/>
+  </object>
+  <object id="8" x="138.667" y="294.667">
+   <polyline points="0,0 13.3333,12"/>
+  </object>
+  <object id="9" x="706.667" y="305.333">
+   <polyline points="0,0 -9.33333,-53.3333"/>
   </object>
  </objectgroup>
 </map>
