@@ -29,6 +29,9 @@ public class UIManager : MonoBehaviour
 
     public static void subRedrawPotions()
     {
+        if (ItemManager.intPotions > 5)
+            ItemManager.intPotions = 5;
+
         for (int i = 0; i < ItemManager.intPotions; i++)
         {
             goPotionsUI.transform.GetChild(i).transform.GetChild(1).gameObject.GetComponent<Image>().enabled = true;

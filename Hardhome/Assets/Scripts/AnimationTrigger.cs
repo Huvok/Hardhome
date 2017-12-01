@@ -24,7 +24,7 @@ public class AnimationTrigger : MonoBehaviour
         {
             if (gameObject.name == "Alexa Boss Trigger")
             {
-                audioCrossfader.CrossFade(acToStart, 1, 3);
+                audioCrossfader.CrossFade(acToStart, .58f, 3);
                 cutsceneManager.subTriggerCutscene("Alexa Boss Fight");
                 Destroy(gameObject);
             }

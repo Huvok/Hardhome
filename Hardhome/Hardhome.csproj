@@ -245,6 +245,7 @@
     <Compile Include="Assets\Scripts\Managers\ItemManager.cs" />
     <Compile Include="Assets\Scripts\Managers\MapManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PathRequestManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\PauseManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />

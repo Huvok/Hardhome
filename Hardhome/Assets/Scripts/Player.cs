@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
     AudioSource audioSourceMisc;
     AudioSource audioSourceOctahedron;
     public AudioClip[] arrAudioClipOctahedron;
+    PauseManager pauseManager;
 
     void Start ()
     {
@@ -56,6 +57,7 @@ public class Player : MonoBehaviour
         audioSourceSwordSlash = transform.GetChild(2).GetComponent<AudioSource>();
         audioSourceMisc = transform.GetChild(3).GetComponent<AudioSource>();
         audioSourceOctahedron = transform.GetChild(5).GetComponent<AudioSource>();
+        pauseManager = GameObject.FindGameObjectWithTag("Pause Manager").GetComponent<PauseManager>();
 
         attackCollider = transform.GetChild(0).GetComponent<PolygonCollider2D>();
         attackCollider.enabled = false;
@@ -74,7 +76,8 @@ public class Player : MonoBehaviour
 	void Update ()
     {
         if (!DialogueManager.boolOnDialogue &&
-            !boolDisableControls)
+            !boolDisableControls &&
+            !pauseManager.boolPause)
         {
             v2Mov = new Vector2(
                 Input.GetAxisRaw("Horizontal"),

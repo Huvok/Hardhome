@@ -61,9 +61,8 @@ public class HealthSystem : MonoBehaviour
         }
         else if (gameObject.tag == "Alexa, the Pitiful Marauder")
         {
-            Destroy(gameObject);
-            yield return new WaitForSeconds(3f);
             GameObject.FindGameObjectWithTag("Cutscene Manager").GetComponent<CutsceneManager>().subTriggerEnding();
+            Destroy(gameObject);
         }
         else
         {

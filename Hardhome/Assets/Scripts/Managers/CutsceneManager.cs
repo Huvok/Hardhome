@@ -69,7 +69,11 @@ public class CutsceneManager : MonoBehaviour
 
         if (animPlayer.GetCurrentAnimatorStateInfo(0).IsName("Ending_Walking_To_Gate"))
         {
-            subMovePlayerToPoint(goPlayer.transform.position, new Vector2(-2.5f, 111.8f), 5f);
+            subMovePlayerToPoint(goPlayer.transform.position, new Vector2(-2.5f, 111.8f), 100f);
+            if (((Vector2)goPlayer.transform.position - new Vector2(-2.5f, 111.8f)).sqrMagnitude < .1)
+            {
+                animPlayer.enabled = false;
+            }
         }
 	}
 
@@ -260,7 +264,7 @@ public class CutsceneManager : MonoBehaviour
     {
         animPlayer.Play("Ending_Walking_To_Gate");
         StartCoroutine(subWaitForDialogueEndThen(() => subLoadCredits("Credits"), "Ending 1"));
-        AudioSource audioSource = GameObject.FindGameObjectWithTag("Main Camera").GetComponent<AudioSource>();
+        AudioSource audioSource = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>();
         StartCoroutine(subFadeAudioSource(audioSource));
     }
 
@@ -273,11 +277,15 @@ public class CutsceneManager : MonoBehaviour
         }
     }
 
-    IEnumerator subLoadCredits(string strScene)
+    public void subLoadCredits(string strScene)
     {
-        yield return new WaitForSeconds(1);
+        StartCoroutine(subLoadCreditsCoroutine(strScene));
+    }
+
+    IEnumerator subLoadCreditsCoroutine(string strScene)
+    {
         FadeIn();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(strScene);
     }
 }

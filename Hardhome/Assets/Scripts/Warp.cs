@@ -49,7 +49,7 @@ public class Warp : MonoBehaviour
 
             yield return new WaitForSeconds(fadeTime);
 
-            audioCrossfader.CrossFade(acToStart, 1, 3);
+            audioCrossfader.CrossFade(acToStart, .58f, 3);
             collider.transform.position = goTarget.transform.GetChild(0).transform.position;
             Camera.main.GetComponent<MainCamera>().subSetBounds(goTargetMap);
 
